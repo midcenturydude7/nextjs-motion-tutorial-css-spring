@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { spring } from "motion";
 
 export default function Home() {
   const [state, setState] = React.useState(false);
@@ -11,13 +12,45 @@ export default function Home() {
           Welcome to Next.js!
         </h1>
         <div className="example-container">
-          <div className="box" data-state={state.toString()}></div>
+          <div className="box" data-state={state}></div>
           <button
             className="p-3 text-gray-700"
             onClick={() => setState(!state)}
           >
             Toggle Position
           </button>
+          <style>
+            {`
+                    .example-container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 20px;
+                    }
+
+                    .example-container .box {
+                        width: 100px;
+                        height: 100px;
+                        background-color: #8df0cc;
+                        border-radius: 10px;
+                        transition: transform ${spring(0.5, 0.8)};
+                        transform: translateX(-100%);
+                    }
+
+                    .example-container .box[data-state="true"] {
+                        transform: translateX(100%) rotate(180deg);
+                    }
+
+                    .example-container button {
+                        background-color: #8df0cc;
+                        color: #0f1115;
+                        border-radius: 5px;
+                        padding: 10px;
+                        margin: 10px;
+                    }
+                `}
+          </style>
         </div>
       </div>
     </div>
