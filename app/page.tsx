@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { spring } from "motion";
 import Box from "./components/Box";
 
 export default function Home() {
